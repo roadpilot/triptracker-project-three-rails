@@ -89,7 +89,7 @@ rails g resource User handle:string email:string password_digest:string --no-tes
 rails g resource Location address:string business_name:string user_id:integer --no-test-framework
 rails g resource Trip user_id:integer --no-test-framework
 rails g resource Comment comment:string user_id:integer location_idinteger --no-test-framework
-rails g resource trip_locations trip_id:integer location_id:integer time_in:string time_out:string --no-test-framework
+rails g resource trip_location trip_id:integer location_id:integer time_in:string time_out:string --no-test-framework
 
 - [ ] 8. Test your models and associations in the console
   - Create some seed data

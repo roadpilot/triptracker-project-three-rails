@@ -68,14 +68,28 @@ Confirm:
     has many locations through trips
 # Location:
     belongs to user
+    belongs to trip
     has many comments
-    has many users through trips
+    has many trips through trip_locations
 # Trip:
     belongs to user
     belongs to location
+    has many locations through trip_locations
 # Comment:
     belongs to user
     belongs to location
+trips will relate to locations through trip_locations join table
+-trip_id
+-location_id
+-time_in
+-time_out
+
+# Build resources
+rails g resource User handle:string email:string password_digest:string --no-test-framework
+rails g resource Location address:string business_name:string user_id:integer --no-test-framework
+rails g resource Trip user_id:integer --no-test-framework
+rails g resource Comment comment:string user_id:integer location_idinteger --no-test-framework
+rails g resource trip_locations trip_id:integer location_id:integer time_in:string time_out:string --no-test-framework
 
 - [ ] 8. Test your models and associations in the console
   - Create some seed data

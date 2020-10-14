@@ -65,7 +65,6 @@ Confirm:
 # User:
     has many trips
     has many comments
-    has many locations through trips
 # Location:
     belongs to user
     belongs to trip
@@ -79,7 +78,7 @@ Confirm:
     belongs to user
     belongs to location
 trips will relate to locations through trip_locations join table
--trip_id
+-user_id
 -location_id
 -time_in
 -time_out

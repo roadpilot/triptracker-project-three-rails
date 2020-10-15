@@ -90,7 +90,7 @@ rails g resource Trip user_id:integer --no-test-framework
 rails g resource Comment comment:string user_id:integer location_idinteger --no-test-framework
 rails g resource trip_location trip_id:integer location_id:integer time_in:string time_out:string --no-test-framework
 
-- [ ] 8. Test your models and associations in the console
+- [X] 8. Test your models and associations in the console
   - Create some seed data
   - Tested our associations in `tux` or rails console
   - Adjust migrations as needed
@@ -105,11 +105,11 @@ rails g resource trip_location trip_id:integer location_id:integer time_in:strin
 
 **START WITH LOGIN**
 
-- [ ] 9. Create your `UsersController`
+- [X] 9. Create your `UsersController`
 
-- [ ] 10. NOT APPLICABLE
+- [X] 10. NOT APPLICABLE
 
-- [ ] 11. Build routes and views for login
+- [X] 11. Build routes and views for login
   - Build your `get` login route + "login" view
   - Build your `post` login route
       - **Tip**: Here is where we authenticate the user and leverage the session hash to log them in!

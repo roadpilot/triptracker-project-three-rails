@@ -3,9 +3,14 @@ class ApplicationController < ActionController::Base
   def index
   end
 
-  helper_method :current_user
-  def current_user
-    User.find(session[:user_id])
+  helpers do
+    def current_user
+      User.find(session[:user_id])
+    end
+
+    def logged_in?
+      !!current_user
+    end
   end
 end
 

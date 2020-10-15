@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   resources :trips
   resources :locations
   resources :users
-  root 'application#index'
+  resources :users do
+    resources :trips, only: [:new]
+  end
+  root 'sessions#new'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'

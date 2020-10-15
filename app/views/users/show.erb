@@ -1,0 +1,11 @@
+
+Handle: <%= @user.handle %><br>
+Email: <%= @user.email %><br>
+Trips: <%= @user.trips.count %><br>
+<ul>
+<% @user.trips.each do |t|%>
+<li><%= t.id %>: <%= t.name %>: <%= t.locations.count%></li>
+<% end %>
+</ul>
+
+<%= link_to "Log Out", "/logout", method:'post' %>

@@ -6,7 +6,9 @@
     <%#= collection_select(:location, :address, Location.all, :address, :address, prompt: "Please select your location from this dropdown") %>
     <%= v.text_field :address, list: 'address_list', autocomplete: 'off' %><br>
     <datalist id="address_list">
-    <option>FOO</option>
+    <% Location.all.each do |l| %>
+      <option value="<%= l.address %>"></option>
+    <% end %>
     </datalist>
     <% end %>
   <%= f.submit %>

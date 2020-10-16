@@ -3,7 +3,11 @@
   <%= f.text_field :name %><br>
     <%= f.fields_for :location do |v| %>
     <%= v.label "foo" %>
-    <%= collection_select(:location, :address, Location.all, :address, :address, prompt: "Please select your location from this dropdown") %>
+    <%#= collection_select(:location, :address, Location.all, :address, :address, prompt: "Please select your location from this dropdown") %>
+    <%= v.text_field :address, list: 'address_list', autocomplete: 'off' %><br>
+    <datalist id="address_list">
+    <option>FOO</option>
+    </datalist>
     <% end %>
   <%= f.submit %>
 <% end %>

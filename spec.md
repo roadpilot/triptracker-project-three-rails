@@ -115,18 +115,18 @@ rails g resource trip_location trip_id:integer location_id:integer time_in:strin
       - **Tip**: Here is where we authenticate the user and leverage the session hash to log them in!
   - Build your `get users/:id` route + "show" view
 
-- [ ] 12. Create your `ApplicationController` helper methods
+- [X] 12. Create your `ApplicationController` helper methods
   - **Ask**: Why do we add this?
   - `#logged_in?`: checks if the user is logged in
   - `#current_user`: keeps track of the user currently logged in
 
 **MOVE ON TO SIGN UP**
-- [ ] 13. Build routes and views for signup
+- [X] 13. Build routes and views for signup
   - Build your `get` signup route + "signup" view
   - Build your `post` signup route
 
 **WRAP UP WITH LOG OUT**
-- [ ] 14. Build your `get` logout route
+- [X] 14. Build your `get` logout route
 
 ### PART 3 — CRUD: Create, Read, Update, Delete
 

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       # binding.pry
       session[:user_id] = @user.id
-      current_user = @user
+      # current_user = @user
       redirect_to user_path(@user)
     else
       flash[:error] = "User signup failed: #{@user.errors.full_messages.to_sentence}"

@@ -131,12 +131,13 @@ rails g resource trip_location trip_id:integer location_id:integer time_in:strin
 ### PART 3 — CRUD: Create, Read, Update, Delete
 
 - [ ] 15. Create your `PostsController`
+  (TripsController) - created with resource gen
   - Mount new controller in `config.ru` with `use PostsController`
-  - **Ask**: Why do we add this? ^
+  - **Ask**: Why do we add this? ^ (SINATRA ONLY)
 
 - [ ] 16. Implement READ functionality
-  - Create `get` posts route
-  - Create a view for displaying all posts
+  - Create `get` trips route
+  - Create a view for displaying all trips
 
 - [ ] 17. Implement CREATE functionality
   - Create `get` posts route and view to render form

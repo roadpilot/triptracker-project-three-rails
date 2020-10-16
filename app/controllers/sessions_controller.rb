@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
     def new
         # nothing to do here!
+        if !session[:user_id].nil? 
+            redirect_to user_path(current_user)
+        else
+            render :new
+        end
     end
  
     def create

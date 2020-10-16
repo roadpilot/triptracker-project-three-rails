@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   def index
+    redirect_to "/"
   end
 
   helper_method :current_user

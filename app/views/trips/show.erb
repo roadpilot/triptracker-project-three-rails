@@ -1,0 +1,10 @@
+Details for trip <%= @trip.id %> (<%= @trip.name %>)<br>
+Locations:<br>
+<ul>
+<% @trip.locations.each do |l| %>
+<li><%=l.address%></li>
+<% end %>
+</ul>
+<%= form_for @trip %>
+
+<% end %>

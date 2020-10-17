@@ -11,5 +11,11 @@
 
   <body>
     <%= yield %>
+    
+<% if logged_in? %>
+<%= link_to "My Trips", user_path(current_user) %>
+<%= link_to "New Trip", new_trip_path %>
+<%= link_to "Log Out", "/logout", method:'post' %>
+<% end %>
   </body>
 </html>

@@ -12,7 +12,7 @@ Locations:<br>
 <td><%=Location.find(l.location_id).address %></td>
 <td><%= tl.text_field :time_in, size: 5, autocomplete: 'off' %><input type="button" value="🕒" onclick="timeStamp(this.form,'trip_location_time_in')" /></td>
 <td><%= tl.text_field :time_out, size: 5, autocomplete: 'off' %><input type="button" value="🕒" onclick="timeStamp(this.form,'trip_location_time_out')" /></td>
-<td><%= tl.submit "Update", style: "display:none" %>🗑️</td>
+<td><%= tl.submit "Update", style: "display:none" %><%= link_to "🗑️", trip_location_path(l.id), method: :delete, data: { confirm: "Are you sure you want to delete this location from your trip?" } %></td>
 <% end %>
 </tr>
 <% end %>

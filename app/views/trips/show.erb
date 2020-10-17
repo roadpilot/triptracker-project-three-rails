@@ -7,7 +7,7 @@ Locations:<br>
 </ul>
 Add a location:<br>
 <%= form_for @location do |f| %>
-    <%= hidden_field_tag(:trip_id, @trip.id) %>
+    <%= hidden_field_tag("location[trip_id]", @trip.id) %>
     <%= f.label "Address: " %>
     <%= f.text_field :address, list: 'address_list', autocomplete: 'off' %><br>
     <datalist id="address_list">

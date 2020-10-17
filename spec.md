@@ -13,18 +13,18 @@
 # Specifications for the Rails Assessment
 
 Specs:
-- [x] Using Ruby on Rails for the project
-- [ ] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes) 
-- [ ] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
-- [ ] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
-- [ ] Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
-- [ ] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
+- [X] Using Ruby on Rails for the project
+- [X] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes) 
+- [X] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
+- [X] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
+- [X] Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
+- [X] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
 - [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-- [ ] Include signup (how e.g. Devise)
-- [ ] Include login (how e.g. Devise)
-- [ ] Include logout (how e.g. Devise)
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+- [X] Include signup (how e.g. Devise)
+- [X] Include login (how e.g. Devise)
+- [X] Include logout (how e.g. Devise)
+- [X] Include third party signup/login (how e.g. Devise/OmniAuth)
 - [ ] Include nested resource show or index (URL e.g. users/2/recipes)
 - [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
 - [ ] Include form display of validation errors (form URL e.g. /recipes/new)
@@ -130,26 +130,26 @@ rails g resource trip_location trip_id:integer location_id:integer time_in:strin
 
 ### PART 3 — CRUD: Create, Read, Update, Delete
 
-- [ ] 15. Create your `PostsController`
+- [X] 15. Create your `PostsController`
   (TripsController) - created with resource gen
   - Mount new controller in `config.ru` with `use PostsController`
   - **Ask**: Why do we add this? ^ (SINATRA ONLY)
 
-- [ ] 16. Implement READ functionality
+- [X] 16. Implement READ functionality
   - Create `get` trips route
   - Create a view for displaying all trips
 
-- [ ] 17. Implement CREATE functionality
+- [X] 17. Implement CREATE functionality
   - Create `get` posts route and view to render form
   - Create `post` route to create new post
 
-- [ ] 18. Implement UPDATE functionality
+- [X] 18. Implement UPDATE functionality
   - Add `use Rack::MethodOverride` in `config.ru`
   - **Ask**: Why do we add this? ^
   - Create `get` route and view to render form
   - Create `patch` route to update an existing post
 
-- [ ] 19. Implement DELETE functionality
+- [X] 19. Implement DELETE functionality
   - Create `delete` form in relevant view
   - Create `delete` route to delete post
 

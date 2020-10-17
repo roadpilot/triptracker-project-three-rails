@@ -8,19 +8,24 @@ Locations:<br>
 </tr>
 <% @trip.trip_locations.each do |l| %>
 <tr>
+<%= form_for l do |tl| %>
 <td><%=Location.find(l.location_id).address %></td>
-<td><%=l.time_in%></td>
-<td><%=l.time_out%></td>
-<td><input type="button" value="Update"></td>
+<td><%= tl.text_field :time_in, size: 5, autocomplete: 'off' %></td>
+<td><%= tl.text_field :time_out, size: 5, autocomplete: 'off' %></td>
+<td><%= tl.submit "Update" %></td>
+<% end %>
 </tr>
 <% end %>
+<tr>
+<td colspan=4>Add a location by address...
+</tr>
 <tr>
 <td colspan=3>
 <%= form_for @location do |f| %>
     <%= hidden_field_tag("location[trip_id]", @trip.id) %>
-    <%= f.text_field :address, list: 'address_list', autocomplete: 'off' %><br>
+    <%= f.text_field :address, list: 'address_list', autocomplete: 'off' %>
     <datalist id="address_list">
-    <% Location.order('address').each do |l| %>
+    <% Location.group('address').order('address').each do |l| %>
       <option value="<%= l.address %>"></option>
     <% end %>
     </datalist>

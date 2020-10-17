@@ -10,9 +10,9 @@ Locations:<br>
 <tr>
 <%= form_for l do |tl| %>
 <td><%=Location.find(l.location_id).address %></td>
-<td><%= tl.text_field :time_in, size: 5, autocomplete: 'off' %></td>
-<td><%= tl.text_field :time_out, size: 5, autocomplete: 'off' %></td>
-<td><%= tl.submit "Update" %></td>
+<td><%= tl.text_field :time_in, size: 5, autocomplete: 'off' %><input type="button" value="🕒" onclick="timeStamp(this.form,'trip_location_time_in')" /></td>
+<td><%= tl.text_field :time_out, size: 5, autocomplete: 'off' %><input type="button" value="🕒" onclick="timeStamp(this.form,'trip_location_time_out')" /></td>
+<td><%= tl.submit "Update", style: "display:none" %>🗑️</td>
 <% end %>
 </tr>
 <% end %>
@@ -20,7 +20,7 @@ Locations:<br>
 <td colspan=4>Add a location by address...
 </tr>
 <tr>
-<td colspan=3>
+<td colspan=2>
 <%= form_for @location do |f| %>
     <%= hidden_field_tag("location[trip_id]", @trip.id) %>
     <%= f.text_field :address, list: 'address_list', autocomplete: 'off' %>
@@ -30,9 +30,21 @@ Locations:<br>
     <% end %>
     </datalist>
   </td>
-  <td>
+  <td align="right">
   <%= f.submit "Add" %>
 <% end %>
 </td>
 </tr>
 </table>
+<script>
+function timeStamp(src,tgt){
+	console.log(src);
+  time = new Date(); 
+  time.setMinutes(time.getMinutes()-time.getTimezoneOffset()); 
+  time = time.toISOString().slice(11,16);
+	if (confirm("Set " + tgt + " for " + src.id + " to " + time)){
+    src.elements[tgt].value=time;
+    src.submit();
+  }
+}
+</script>

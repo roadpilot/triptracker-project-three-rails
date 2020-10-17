@@ -11,7 +11,7 @@ Add a location:<br>
     <%= f.label "Address: " %>
     <%= f.text_field :address, list: 'address_list', autocomplete: 'off' %><br>
     <datalist id="address_list">
-    <% Location.all.each do |l| %>
+    <% Location.order('address').each do |l| %>
       <option value="<%= l.address %>"></option>
     <% end %>
     </datalist>

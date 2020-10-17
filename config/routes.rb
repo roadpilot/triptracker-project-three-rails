@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   post '/logout' => 'sessions#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+
 end

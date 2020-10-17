@@ -1,19 +1,33 @@
 Details for trip <%= @trip.id %> (<%= @trip.name %>)<br>
 Locations:<br>
-<ul>
-<% @trip.locations.each do |l| %>
-<li><%=l.address%></li>
+<table>
+<tr>
+<td>Address</td>
+<td>Time in</td>
+<td>Time out</td>
+</tr>
+<% @trip.trip_locations.each do |l| %>
+<tr>
+<td><%=Location.find(l.location_id).address %></td>
+<td><%=l.time_in%></td>
+<td><%=l.time_out%></td>
+<td><input type="button" value="Update"></td>
+</tr>
 <% end %>
-</ul>
-Add a location:<br>
+<tr>
+<td colspan=3>
 <%= form_for @location do |f| %>
     <%= hidden_field_tag("location[trip_id]", @trip.id) %>
-    <%= f.label "Address: " %>
     <%= f.text_field :address, list: 'address_list', autocomplete: 'off' %><br>
     <datalist id="address_list">
     <% Location.order('address').each do |l| %>
       <option value="<%= l.address %>"></option>
     <% end %>
     </datalist>
-  <%= f.submit "Add location" %>
+  </td>
+  <td>
+  <%= f.submit "Add" %>
 <% end %>
+</td>
+</tr>
+</table>

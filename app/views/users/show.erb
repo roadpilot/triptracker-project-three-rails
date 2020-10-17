@@ -4,7 +4,10 @@ Email: <%= @user.email %><br>
 Trips: <%= @user.trips.count %><br>
 <ul>
 <% @user.trips.each do |t|%>
-<li><%= t.id %>: <%= link_to t.name, trip_path(t) %>: <%= t.locations.count%></li>
+<li>
+<%= t.id %>: <%= link_to t.name, trip_path(t) %>: <%= t.locations.count%>
+<%= link_to "🗑️", trip_path(t.id), method: :delete, data: { confirm: "Are you sure you want to delete this trip?" } %>
+</li>
 <% end %>
 </ul>
 

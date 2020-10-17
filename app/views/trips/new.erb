@@ -1,7 +1,7 @@
 <%= form_for(@trip) do |f| %>
   <label>Trip name:</label>
   <%= f.text_field :name %><br>
-    <%= f.fields_for :location do |v| %>
+    <%= f.fields_for :locations do |v| %>
     <%= v.label "foo" %>
     <%#= collection_select(:location, :address, Location.all, :address, :address, prompt: "Please select your location from this dropdown") %>
     <%= v.text_field :address, list: 'address_list', autocomplete: 'off' %><br>

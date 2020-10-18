@@ -1,0 +1,15 @@
+<% if flash[:error] %>
+<h3 style="color:red;"><%= flash[:error] %></h3>
+<% end %>
+<% flash[:error]="" %>
+<table>
+<%= form_for(@trip) do |f| %>
+<tr>
+  <td><label>Trip name:</label></td>
+  <td><%= f.text_field :name, placeholder: "(Optional)", autocomplete: "off" %></td>
+</tr>
+<tr>
+  <td><%= f.submit %></td>
+</tr>
+<% end %>
+</table>

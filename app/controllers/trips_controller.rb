@@ -24,6 +24,7 @@ class TripsController < ApplicationController
     # SHOW ALL TRIPS FOR LOGGED IN USER
     def show
         @trip = Trip.find_by(id: params[:id])
+        @locations = Location.all
         @location = Location.new
         if current_user.id != @trip.user_id
             flash[:error] = "User not authorized to other user resources."
@@ -31,6 +32,11 @@ class TripsController < ApplicationController
         end        
     end
 
+    # EDIT EXISTING TRIP (NAME ONLY)
+    def edit
+        @trip = Trip.find_by(id: params[:id])
+    end
+    
     # CREATE NEW TRIP FROM FORM AND ASSOCIATE A NEW LOCATION
     def create
         if trip_params[:locations][:address].strip == ""
@@ -46,17 +52,12 @@ class TripsController < ApplicationController
         end
     end
 
-    # NOT APPLICABLE
-    # def update
-    #     # binding.pry
-    #     # @location = Location.find_or_create_by(address: trip_params[:locations_attributes][:address])
-    #     @location = Location.find_or_create_by(address: trip_params[:locations][:address]) do |u|
-    #         u.user_id = current_user.id
-    #     end
-    #     @trip = current_user.trips.find_by(id: params[:id])
-    #     @trip.trip_locations.create!(location_id: @location.id)
-    #     redirect_to trip_path(@trip)
-    # end
+    # USER UPDATE NAME OF TRIP
+    def update
+        @trip = current_user.trips.find_by(id: params[:id])
+        @trip.update(trip_params)
+        redirect_to trip_path(@trip)
+    end
 
     # DELETE EXISTING TRIP AND SEND BACK TO USERS SHOWW
     def destroy

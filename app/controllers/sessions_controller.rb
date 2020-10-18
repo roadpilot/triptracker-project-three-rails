@@ -12,8 +12,11 @@ class SessionsController < ApplicationController
     # CREATE NEW SESSION FROM LOGIN PARAMS OR FROM OMNIAUTH
     def create
       if auth
+        email = auth['info']['email']
+        email = "#{auth['info']['nickname']}@github" if email.nil?
         @user = User.find_or_create_by(handle: auth[:info][:nickname]) do |u|
-          u.email = auth['info']['email']
+          u.email = email
+          u.password = auth['uid']
         end
         session[:user_id] = @user.id
         redirect_to "/users/#{@user.id}"

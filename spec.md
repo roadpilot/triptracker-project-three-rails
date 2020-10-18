@@ -19,15 +19,15 @@ Specs:
 - [X] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
 - [X] Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
 - [X] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
-- [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+- [X] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 - [X] Include signup (how e.g. Devise)
 - [X] Include login (how e.g. Devise)
 - [X] Include logout (how e.g. Devise)
 - [X] Include third party signup/login (how e.g. Devise/OmniAuth)
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [X] Include nested resource show or index (URL e.g. users/2/recipes)
+- [X] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
+- [X] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
 - [ ] The application is pretty DRY
@@ -154,16 +154,16 @@ rails g resource trip_location trip_id:integer location_id:integer time_in:strin
   - Create `delete` route to delete post
 
 ### PART 4 — Tighten Up!: Validations and Authorization
-- [ ] 20. Implement `sinatra-flash` gem to display validation failures and improve user experience (UX)
+- [X] 20. Implement `sinatra-flash` gem to display validation failures and improve user experience (UX)
   - Review the [docs](https://github.com/SFEley/sinatra-flash)
   - **Tip**: a `flash[:message]` has the lifecyle of one `GET` request and will not show up when rendering an `erb` file.
-- [ ] 21. Include ActiveRecord validations in your `User` and `Post` model that checks for user inputs
+- [X] 21. Include ActiveRecord validations in your `User` and `Post` model that checks for user inputs
   - **Ex**: Making sure all form fields are filled out or that a user is using a unique email or username
   - Review the [docs](https://guides.rubyonrails.org/active_record_validations.html)
   - **Tip**: `has_secure_password` has a built in validation for the `password_digest` attribute!
-- [ ] 22. Leverage the `logged_in?` helper method in the controller and/or views to implement authorization for creating a new post.
+- [X] 22. Leverage the `logged_in?` helper method in the controller and/or views to implement authorization for creating a new post.
   - Make sure a user can't create a new post without being logged in.
-- [ ] 23. Implement authorization to edit and delete.
+- [X] 23. Implement authorization to edit and delete.
   - Make sure a user can't edit or delete a post that doesn't belong to them.
 - [ ] 24. Refactor your code to make it more DRY!
   - **Ask**: Where am I repeating myself?

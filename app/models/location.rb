@@ -6,4 +6,6 @@ class Location < ApplicationRecord
     has_many :trips, through: :trip_locations
     validates :address, presence: true
 
+    scope :address_only, -> { select(:address).distinct } 
+
 end

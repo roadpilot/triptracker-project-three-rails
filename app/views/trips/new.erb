@@ -13,7 +13,7 @@
     <td><%= v.label "Address:" %></td>
     <td><%= v.text_field :address, list: 'address_list', autocomplete: 'off' %></td>
     <datalist id="address_list">
-    <% Location.all.each do |l| %>
+    <% Location.address_only.order(:address).each do |l| %>
       <option value="<%= l.address %>"></option>
     <% end %>
     </datalist>

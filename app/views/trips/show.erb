@@ -29,7 +29,7 @@ Locations:<br>
     <%= hidden_field_tag("location[trip_id]", @trip.id) %>
     <%= f.text_field :address, list: 'address_list', autocomplete: 'off' %>
     <datalist id="address_list">
-    <% Location.group('address').order('address').each do |l| %>
+    <% Location.address_only.order(:address).each do |l| %>
       <option value="<%= l.address %>"></option>
     <% end %>
     </datalist>

@@ -5,8 +5,15 @@ class TripsController < ApplicationController
     end
 
     def new
-        @trip = Trip.new
-        @trip.locations.build(business_name: "blank")
+        # raise params.inspect
+        # binding.pry
+        if params[:user_id].to_i == current_user.id
+            @trip = Trip.new
+            @trip.locations.build(business_name: "blank")
+        else
+            flash[:error] = "User not authorized to other user resources."
+            redirect_to "/"
+        end
     end
 
     def show

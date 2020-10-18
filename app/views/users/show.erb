@@ -1,4 +1,7 @@
-
+<% if flash[:error] %>
+<h3 style="color:red;"><%= flash[:error] %></h3>
+<% end %>
+<% flash[:error]="" %>
 Handle: <%= @user.handle %><br>
 Email: <%= @user.email %><br>
 Trips: <%= @user.trips.count %><br>

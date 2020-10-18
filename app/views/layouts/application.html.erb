@@ -14,7 +14,7 @@
     
 <% if logged_in? %>
 <%= link_to "My Trips", user_path(current_user) %>
-<%= link_to "New Trip", new_trip_path %>
+<%= link_to "New Trip", "#{user_path(current_user)}/trips/new" %>
 <%= link_to "Log Out", "/logout", method:'post' %>
 <% end %>
   </body>

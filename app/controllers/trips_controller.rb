@@ -12,8 +12,12 @@ class TripsController < ApplicationController
             @trip = Trip.new
             @trip.locations.build(business_name: "blank")
         else
-            flash[:error] = "User not authorized to other user resources."
-            redirect_to "/"
+            if params[:user_id]
+                flash[:error] = "User not authorized to other user resources."
+                redirect_to "/"
+            else
+                redirect_to "/users/#{current_user.id}/trips/new"
+            end
         end
     end
 

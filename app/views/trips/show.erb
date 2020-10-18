@@ -1,3 +1,7 @@
+<% if flash[:error] %>
+<h3 style="color:red;"><%= flash[:error] %></h3>
+<% end %>
+<% flash[:error]="" %>
 Details for trip <%= @trip.id %> (<%= @trip.disp_name %>)<br>
 Locations:<br>
 <table>

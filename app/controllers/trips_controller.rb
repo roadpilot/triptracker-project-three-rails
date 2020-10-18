@@ -17,12 +17,21 @@ class TripsController < ApplicationController
     end
 
     def create
-        @location = Location.find_or_create_by(address: trip_params[:locations][:address]) do |u|
-            u.user_id = current_user.id
+        if trip_params[:locations][:address].strip == ""
+            flash[:error] = "Address can not be blank."
+            # @trip = Trip.new
+            # @trip.locations.build(business_name: "blank")
+            # # render :new
+            redirect_to "#{user_path(current_user)}#{new_trip_path}"
+        else
+            @location = Location.find_or_create_by(address: trip_params[:locations][:address]) do |u|
+                u.user_id = current_user.id
+            end
+            # binding.pry
+            @trip = current_user.trips.create(name: trip_params[:name])
+            @trip.trip_locations.create(location_id: @location.id)
+            redirect_to trip_path(@trip)
         end
-        @trip = current_user.trips.create(name: trip_params[:name])
-        @trip.trip_locations.create(location_id: @location.id)
-        redirect_to trip_path(@trip)
     end
 
     # def update

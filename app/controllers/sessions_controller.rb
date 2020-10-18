@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
+
+    # ROOT STARTS AT LOGIN SCREEN
     def new
-        # nothing to do here!
         if !session[:user_id].nil? 
             redirect_to user_path(current_user)
         else
@@ -8,8 +9,8 @@ class SessionsController < ApplicationController
         end
     end
  
+    # CREATE NEW SESSION FROM LOGIN PARAMS OR FROM OMNIAUTH
     def create
-      # binding.pry
       if auth
         @user = User.find_or_create_by(handle: auth[:info][:nickname]) do |u|
           u.email = auth['info']['email']
@@ -24,18 +25,18 @@ class SessionsController < ApplicationController
         else
           flash[:error] = "Sorry, your username or password was incorrect"
           redirect_to '/login'
-          # render :new
         end
-        # return head(:forbidden) unless @user.authenticate(params[:user][:password])
       end
     end
 
+    # LOGOUT AND SEND BACK TO LOGIN SCREEN
     def destroy
       session.delete :user_id
       redirect_to '/'
     end
-  private
 
+  private
+  # METHOD FOR OMNIAUTH VARIABLES
   def auth
     request.env['omniauth.auth']
   end

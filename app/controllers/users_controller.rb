@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
-  # before_action :require_logged_in
 
+  # SHOW ONLY CURRENT USER SHOW PAGE IF LOGGED IN
   def show
-    # raise @user.inspect
     if logged_in? and params[:id].to_i == current_user.id
       @user = User.find(params[:id])
     else
@@ -11,25 +10,24 @@ class UsersController < ApplicationController
     end
 end
 
+  # BUILD INSTANCE FOR NEW USER PAGE
   def new
     @user = User.new
   end
 
+  # CREATE NEW USER
   def create
-    # binding.pry
     @user = User.new(user_params)
     if @user.save
-      # binding.pry
       session[:user_id] = @user.id
-      # current_user = @user
       redirect_to user_path(@user)
     else
       flash[:error] = "User signup failed: #{@user.errors.full_messages.to_sentence}"
-      # redirect_to '/users/new'
       render :new 
     end
   end
 
+  # STRONG PARAMS PERMISSIONS
   private
   def user_params
     params.require(:user).permit(:handle, :email, :password)

@@ -1,13 +1,13 @@
 class TripsController < ApplicationController
   before_action :require_logged_in
 
+    # INDEX PAGE OF ALL TRIPS BY USER, DEMO ONLY
     def index
         @trips = current_user.trips
     end
 
+    # NEW TRIP
     def new
-        # raise params.inspect
-        # binding.pry
         if params[:user_id].to_i == current_user.id
             @trip = Trip.new
             @trip.locations.build(business_name: "blank")
@@ -17,6 +17,7 @@ class TripsController < ApplicationController
         end
     end
 
+    # SHOW ALL TRIPS FOR LOGGED IN USER
     def show
         @trip = Trip.find_by(id: params[:id])
         @location = Location.new
@@ -26,24 +27,22 @@ class TripsController < ApplicationController
         end        
     end
 
+    # CREATE NEW TRIP FROM FORM AND ASSOCIATE A NEW LOCATION
     def create
         if trip_params[:locations][:address].strip == ""
             flash[:error] = "Address can not be blank."
-            # @trip = Trip.new
-            # @trip.locations.build(business_name: "blank")
-            # # render :new
             redirect_to "#{user_path(current_user)}#{new_trip_path}"
         else
             @location = Location.find_or_create_by(address: trip_params[:locations][:address]) do |u|
                 u.user_id = current_user.id
             end
-            # binding.pry
             @trip = current_user.trips.create(name: trip_params[:name])
             @trip.trip_locations.create(location_id: @location.id)
             redirect_to trip_path(@trip)
         end
     end
 
+    # NOT APPLICABLE
     # def update
     #     # binding.pry
     #     # @location = Location.find_or_create_by(address: trip_params[:locations_attributes][:address])
@@ -55,6 +54,7 @@ class TripsController < ApplicationController
     #     redirect_to trip_path(@trip)
     # end
 
+    # DELETE EXISTING TRIP AND SEND BACK TO USERS SHOWW
     def destroy
         trip = Trip.find_by(id: params[:id])
         trip.destroy
@@ -62,12 +62,13 @@ class TripsController < ApplicationController
     end
 
     private
+    # STRONG PARAMS PERMISSIONS
     def trip_params
         params.require(:trip).permit(
-        :name,
-        locations: [
-            :address
-        ]
+            :name,
+            locations: [
+                :address
+            ]
         )
     end
 

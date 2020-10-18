@@ -16,6 +16,8 @@
 <%= link_to "My Trips", user_path(current_user) %>
 <%= link_to "New Trip", "#{user_path(current_user)}/trips/new" %>
 <%= link_to "Log Out", "/logout", method:'post' %>
+<% else %>
+<p>Try <%= link_to 'Signing in with the GitHub strategy', '/auth/github'%>.</p>
 <% end %>
   </body>
 </html>

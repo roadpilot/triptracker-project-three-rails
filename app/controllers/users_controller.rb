@@ -1,8 +1,16 @@
 class UsersController < ApplicationController
+  before_action :require_logged_in
+
   def show
-    @user = User.find(params[:id])
     # raise @user.inspect
-  end
+    if params[:id].to_i == current_user.id
+      @user = User.find(params[:id])
+    else
+      flash[:error] = "User not authorized to other user resources."
+      redirect_to "/"
+    end
+end
+
   def new
     @user = User.new
   end

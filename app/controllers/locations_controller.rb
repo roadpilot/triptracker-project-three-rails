@@ -1,4 +1,6 @@
 class LocationsController < ApplicationController
+  before_action :require_logged_in
+
     def create
         # binding.pry
         # @location = current_user.locations.find_or_create_by(address: location_params[:address])

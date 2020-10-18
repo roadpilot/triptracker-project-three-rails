@@ -1,4 +1,6 @@
 class TripLocationsController < ApplicationController
+  before_action :require_logged_in
+
     def update
         # binding.pry
         tl = TripLocation.find_by(id: params[:id])

@@ -14,13 +14,21 @@ class SessionsController < ApplicationController
         @user = User.find_or_create_by(handle: auth[:info][:nickname]) do |u|
           u.email = auth['info']['email']
         end
+        session[:user_id] = @user.id
+        redirect_to "/users/#{@user.id}"
       else
         @user = User.find_by(handle: params[:user][:handle])
-        return head(:forbidden) unless @user.authenticate(params[:user][:password])
+        if @user && @user.authenticate(params[:user][:password])
+          session[:user_id] = @user.id
+        redirect_to "/users/#{@user.id}"
+        else
+          flash[:error] = "Sorry, your username or password was incorrect"
+          redirect_to '/login'
+          # render :new
+        end
+        # return head(:forbidden) unless @user.authenticate(params[:user][:password])
       end
-      session[:user_id] = @user.id
-      redirect_to "/users/#{@user.id}"
-  end
+    end
 
     def destroy
       session.delete :user_id

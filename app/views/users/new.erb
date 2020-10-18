@@ -1,13 +1,16 @@
 <% if flash[:error] %>
-<h2 style="color:red;"><%= flash[:error] %></h2>
+<h3 style="color:red;"><%= flash[:error] %></h3>
 <% end %>
-<h1>Sign up as a new user.</h1>
+<% flash[:error]="" %>
+<h1>Sign up as a new TripTracker user.</h1>
 <%= form_for(@user) do |f| %>
   <label>Handle or Nickname:</label>
   <%= f.text_field :handle %><br>
   <label>Email:</label>
   <%= f.text_field :email %><br>
   <label>Password:</label>
-  <%= f.text_field :password %><br>
-  <%= f.submit %>
+  <%= f.password_field :password %><br>
+  <%= f.submit "Sign up"%> or <a href="/login">Log in</a>
+      <p>Try <%= link_to 'Signing in with the GitHub strategy', '/auth/github'%>.</p>
+
 <% end %> 

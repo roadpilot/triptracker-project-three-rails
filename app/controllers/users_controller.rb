@@ -17,7 +17,8 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     else
       flash[:error] = "User signup failed: #{@user.errors.full_messages.to_sentence}"
-      redirect_to '/users/new' 
+      # redirect_to '/users/new'
+      render :new 
     end
   end
 

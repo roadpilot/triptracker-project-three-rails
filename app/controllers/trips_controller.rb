@@ -20,8 +20,10 @@ class TripsController < ApplicationController
     def show
         @trip = Trip.find_by(id: params[:id])
         @location = Location.new
-        # binding.pry
-        # @trip.trip_locations.build(trip_id: params[:id])
+        if current_user.id != @trip.user_id
+            flash[:error] = "User not authorized to other user resources."
+            redirect_to "/"
+        end        
     end
 
     def create

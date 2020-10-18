@@ -2,11 +2,16 @@ class UsersController < ApplicationController
 
   # SHOW ONLY CURRENT USER SHOW PAGE IF LOGGED IN
   def show
-    if logged_in? and params[:id].to_i == current_user.id
-      @user = User.find(params[:id])
+    if logged_in? and 
+      if params[:id].to_i == current_user.id
+        @user = User.find(params[:id])
+      else
+        flash[:error] = "User not authorized to other user resources."
+        redirect_to "/"
+      end
     else
-      flash[:error] = "User not authorized to other user resources."
-      redirect_to "/"
+        flash[:error] = "Please log in to use TripTracker."
+        redirect_to "/"
     end
 end
 

@@ -7,6 +7,28 @@
 - [X] 5. Make sure to check each box in your spec.md (replace the space between the square braces with an x) and explain next to each one how you've met the requirement *before* you submit your project.
 - [X] 6. Write a README.md.
 - [ ] 7. Submit a video of how a user would interact with your working web application.
+DEMO:
+- login as new user
+- login validation errors (new)
+    = dup handle (roadpilot)
+    = dup email (test@mail.com)
+- logout
+- login as existing user
+- login validation errors (existing)
+    = pw wrong
+    = handle wrong
+- login as github
+- create trip
+- read trip
+- update trip
+- add location
+- delete location
+- update time in / time out
+- delete trip
+- test for unauth access
+- logout
+- test for logged out access
+
 - [ ] 8. Write a blog post about the project and process.
 - [ ] 9. When done, submit your GitHub repo's url, a link to your video demo, and a link to your blog post in the corresponding text boxes in the right rail. Hit "I'm done" to wrap it up.
 

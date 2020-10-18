@@ -1,15 +1,22 @@
+<table>
 <%= form_for(@trip) do |f| %>
-  <label>Trip name:</label>
-  <%= f.text_field :name %><br>
+<tr>
+  <td><label>Trip name:</label></td>
+  <td><%= f.text_field :name, placeholder: "(Optional)", autocomplete: "off" %></td>
+</tr>
+<tr>
     <%= f.fields_for :locations do |v| %>
-    <%= v.label "foo" %>
-    <%#= collection_select(:location, :address, Location.all, :address, :address, prompt: "Please select your location from this dropdown") %>
-    <%= v.text_field :address, list: 'address_list', autocomplete: 'off' %><br>
+    <td><%= v.label "Address:" %></td>
+    <td><%= v.text_field :address, list: 'address_list', autocomplete: 'off' %></td>
     <datalist id="address_list">
     <% Location.all.each do |l| %>
       <option value="<%= l.address %>"></option>
     <% end %>
     </datalist>
     <% end %>
-  <%= f.submit %>
+</tr>
+<tr>
+  <td><%= f.submit %></td>
+</tr>
 <% end %>
+</table>

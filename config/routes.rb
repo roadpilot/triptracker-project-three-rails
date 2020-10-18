@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :trip_locations#, only: [:show,:create,:destroy]
+  resources :trip_locations, only: [:show,:create,:destroy]
   # resources :comments  FOR FUTURE USE
-  resources :trips#, only: [:index,:show,:new,:create,:destroy]
-  resources :locations#, only: [:index,:create]
+  resources :locations, only: [:index,:create]
   # resources :users, only: []
 
   # resources :users, only: [:show,:new,:create] do
-  resources :users do
+  resources :users, only: [:show,:new,:create] do
     resources :trips, only: [:new]
   end
+  resources :trips, only: [:index,:show,:new,:create,:destroy]
 
   root 'sessions#new'
   get '/login' => 'sessions#new'

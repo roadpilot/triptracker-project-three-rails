@@ -30,10 +30,10 @@ Specs:
 - [X] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [X] The application is pretty DRY
+- [X] Limited logic in controllers
+- [X] Views use helper methods if appropriate
+- [X] Views use partials if appropriate
 
 # Project Order of Operations Guide
 
@@ -42,23 +42,23 @@ Confirm:
 ### PART 1 — Project Setup: MVC, ActiveRecord
 
 **BEFORE YOU CODE**
-- [ ] 1. Check project requirements in `spec.md`
-- [ ] 2. Ideate! What do you want to build?
+- [X] 1. Check project requirements in `spec.md`
+- [X] 2. Ideate! What do you want to build?
   - choose a domain you're familiar with!
   - choose a domain you care about
-- [ ] 3. Wireframing & User Stories
+- [X] 3. Wireframing & User Stories
   - Write down your models, their attributes, and their associations
   - "As a user, I can ....."
   - "A user should be able to ....."
   - What does your app _do_?
-- [ ] 4. Design your MVP = 'Minimum Viable Product' vs. what are my 'stretch goals'
+- [X] 4. Design your MVP = 'Minimum Viable Product' vs. what are my 'stretch goals'
   - Stretch goals - bonus features you want but don't need
 
 **NOW WE CODE (BUT JUST OUR MODELS — NO CONTROLLERS OR VIEWS)**
 
-- [ ] 5. Generate new project using rails new
-- [ ] 6. Create github repo
-- [ ] 7. Build your models
+- [X] 5. Generate new project using rails new
+- [X] 6. Create github repo
+- [X] 7. Build your models
   - Migrations
   - Model classes
   - Associations
@@ -165,7 +165,7 @@ rails g resource trip_location trip_id:integer location_id:integer time_in:strin
   - Make sure a user can't create a new post without being logged in.
 - [X] 23. Implement authorization to edit and delete.
   - Make sure a user can't edit or delete a post that doesn't belong to them.
-- [ ] 24. Refactor your code to make it more DRY!
+- [X] 24. Refactor your code to make it more DRY!
   - **Ask**: Where am I repeating myself?
 - [ ] 25. Create a `README.md`
   - Include a short description, install instructions, a contributors guide and a link to the license for your code

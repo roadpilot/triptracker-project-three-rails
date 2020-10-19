@@ -10,8 +10,10 @@ module ApplicationHelper
 
   def require_logged_in
     # return head(:forbidden) unless session.include? :user_id
-    flash[:error] = "Please log in to use TripTracker."
-    redirect_to "/"
+    if !session.include? :user_id
+      flash[:error] = "Please log in to use TripTracker."
+      redirect_to "/"
+    end
   end
 
 end

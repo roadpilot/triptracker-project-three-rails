@@ -24,11 +24,16 @@ class TripsController < ApplicationController
     # SHOW ALL TRIPS FOR LOGGED IN USER
     def show
         @trip = Trip.find_by(id: params[:id])
-        @locations = Location.all
-        @location = Location.new
-        if current_user.id != @trip.user_id
-            flash[:error] = "User not authorized to other user resources."
-            redirect_to "/"
+        if !@trip.nil?
+            @locations = Location.all
+            @location = Location.new
+            if current_user.id != @trip.user_id
+                flash[:error] = "User not authorized to view other user resources."
+                redirect_to "/"
+            end
+        else
+            flash[:error] = "Trip ID invalid."
+            redirect_to user_path(current_user)
         end        
     end
 
@@ -63,6 +68,9 @@ class TripsController < ApplicationController
     def destroy
         trip = Trip.find_by(id: params[:id])
         trip.destroy
+        trip.trip_locations.each do |tl|
+            tl.destroy
+        end
         redirect_to user_path(trip.user_id)
     end
 

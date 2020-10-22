@@ -16,7 +16,11 @@ Trips: <%= @user.trips.count %><br>
 <td align="center"><%= t.id %></td>
 <td><%= link_to t.disp_name, trip_path(t) %></td>
 <td align="center"><%= t.locations.size%></td>
-<td><%= link_to "🗑️", trip_path(t.id), method: :delete, data: { confirm: "Are you sure you want to delete this trip?" } %></td>
+  <td><%= form_with(url: trip_path(t.id), method: "delete") do |f| %>
+    <%= submit_tag("🗑️", :onclick => "return confirm('Are you sure you want to delete this trip?')") %>
+  <% end %>
+
+<%#= link_to "🗑️", trip_path(t.id), method: :delete, data: { confirm: "Are you sure you want to delete this trip?" } %></td>
 </tr>
 <% end %>
 </table>

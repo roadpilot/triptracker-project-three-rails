@@ -1,4 +1,7 @@
 # TripTracker
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Ol70wVnnti8
+" target="_blank"><img src="http://img.youtube.com/vi/Ol70wVnnti8/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 ## Description
 
